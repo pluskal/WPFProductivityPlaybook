@@ -24,6 +24,13 @@
         </b:Interaction.Behaviors>
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup x:Name="ToolbarStates">
+                <VisualStateGroup.Transitions>
+                    <VisualTransition GeneratedDuration="0:0:0.5">
+                        <VisualTransition.GeneratedEasingFunction>
+                            <CubicEase EasingMode="EaseInOut"/>
+                        </VisualTransition.GeneratedEasingFunction>
+                    </VisualTransition>
+                </VisualStateGroup.Transitions>
                 <VisualState x:Name="Closed" />
 
                 <VisualState x:Name="Open">

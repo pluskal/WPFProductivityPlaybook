@@ -45,4 +45,4 @@
    4. Set the `TrueState` to `Opened`.
    5. Set the `FalseState` to `Closed`.
    6. Run the application and click on the arrow button.
-
+6. Set the `VisualState` transition `default transition` to be of type `Cubic` and transition time to `0.5s`.

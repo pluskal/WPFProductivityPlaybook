@@ -1,15 +1,10 @@
-﻿<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:BlendAnimations" xmlns:b="http://schemas.microsoft.com/xaml/behaviors" x:Name="window"
-        x:Class="BlendAnimations.MainWindow"
-        mc:Ignorable="d"
-        Title="MainWindow"
-        Height="350"
-        Width="525">
-    <Window.Resources>
-        <Storyboard x:Key="WarningBounce">
+# BlendAnimations
+
+1. Create new `Storyboard` called `WarningBounce`.
+2. Create three entries resing the `image`.
+3. Modify story board to decrease and restore the image size.
+```XML
+ <Storyboard x:Key="WarningBounce">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" 
                                            Storyboard.TargetName="image"
                                            RepeatBehavior="0:0:2">
@@ -25,29 +20,20 @@
                 <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="1"/>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
-    </Window.Resources>
-    <Grid>
-        <Image x:Name="image"
-               HorizontalAlignment="Left"
-               Height="64"
-               VerticalAlignment="Top"
-               Width="64"
-               Margin="10,10,0,0"
-               Source="images/Warning 2 -WF.png" RenderTransformOrigin="0.5,0.5">
-            <Image.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Image.RenderTransform>
-            <b:Interaction.Triggers>
+```
+4. Run the application and observe the animation that **runs at startup** because of the implicit `trigger`.
+```XML
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <BeginStoryboard Storyboard="{StaticResource WarningBounce}"/>
+        </EventTrigger>
+    </Window.Triggers>
+```
+5. Use `ControlStoryboardAction` to run the animation on the image click. Drag and drop the behavior `ControlStoryboardAction` located in `Assets\Behaviors` onto the image in `Objects and Timeline` tab.
+```XML
+<b:Interaction.Triggers>
                 <b:EventTrigger EventName="MouseLeftButtonDown">
                     <b:ControlStoryboardAction Storyboard="{StaticResource WarningBounce}"/>
                 </b:EventTrigger>
             </b:Interaction.Triggers>
-        </Image>
-
-    </Grid>
-</Window>
+```

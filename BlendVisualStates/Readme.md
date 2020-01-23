@@ -12,3 +12,6 @@
                 </TransformGroup>
             </Image.RenderTransform>
 ```
+3. Add a new `StateGroup` called `ToolbarStates` in `States` tab.
+   1. Create a new `state` clalled `Closed` and second one called `Open`.
+   2. Select the `Open` state and use designer to rotate the arrow to `45` and set `ItemsControl` height to `60` using the `Properties` tab.

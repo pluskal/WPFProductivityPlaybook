@@ -5,6 +5,7 @@
         xmlns:local="clr-namespace:BlendVisualStates"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+        xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
         x:Name="window"
         x:Class="BlendVisualStates.MainWindow"
         mc:Ignorable="d"
@@ -18,6 +19,22 @@
         </ItemsPanelTemplate>
     </Window.Resources>
     <Grid>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="ToolbarStates">
+                <VisualState x:Name="Closed" />
+
+                <VisualState x:Name="Open">
+                    <Storyboard>
+                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="image">
+                            <EasingDoubleKeyFrame KeyTime="0" Value="45"/>
+                        </DoubleAnimationUsingKeyFrames>
+                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Height)" Storyboard.TargetName="itemsControl">
+                            <EasingDoubleKeyFrame KeyTime="0" Value="60"/>
+                        </DoubleAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
         <TextBlock Text="Content"
                    HorizontalAlignment="Center"
                    VerticalAlignment="Top"

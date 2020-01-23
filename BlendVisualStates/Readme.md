@@ -15,3 +15,28 @@
 3. Add a new `StateGroup` called `ToolbarStates` in `States` tab.
    1. Create a new `state` clalled `Closed` and second one called `Open`.
    2. Select the `Open` state and use designer to rotate the arrow to `45` and set `ItemsControl` height to `60` using the `Properties` tab.
+4. Drag&Drop the `CallMethodAction` behavior from `Assets\Behaviors` tab to the `Image` in the `Objects and Timeline` tab. 
+   1. In properties of the `CallMethodAction` set the `TargetObject` to the `Window` in the designer.
+   2. Use `ToggleIsState` as the `MethodName`.
+   3. Create the `DependencyProperty` called `IsOpen` in the code-behind.
+   ```csharp
+    public bool IsOpen
+        {
+            get { return (bool)GetValue(IsOpenProperty); }
+            set { SetValue(IsOpenProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for IsOpen.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty IsOpenProperty =
+            DependencyProperty.Register("IsOpen", typeof(bool), typeof(MainWindow), new PropertyMetadata(false));
+   ```
+   4. Create the `ToggleIsOpen` method in the code-behind.
+   ```csharp
+   public void ToggleIsOpen()
+        {
+            IsOpen = !IsOpen;
+        }
+   ```
+   5. Drag&Drop `DataStateBehavior` onto the root `Grid`.
+
+   > You can also use `GoToStateAction` that is better in case that you use multiple states.

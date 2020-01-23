@@ -37,6 +37,12 @@
             IsOpen = !IsOpen;
         }
    ```
-   5. Drag&Drop `DataStateBehavior` onto the root `Grid`.
+5. Drag&Drop `DataStateBehavior` onto the root `Grid`.
+> You can also use `GoToStateAction` that is better in case that you use multiple states.
+   1. Build the solution!
+   2. In the properties of the `DataStateBehavior` select the wrench and set the `Binding` to the `Window` element int hte `Objects and Timeline`. And set `Property of Window` to the `IsOpen`.
+   3. Set the `Value` to monitor to `True`.
+   4. Set the `TrueState` to `Opened`.
+   5. Set the `FalseState` to `Closed`.
+   6. Run the application and click on the arrow button.
 
-   > You can also use `GoToStateAction` that is better in case that you use multiple states.

@@ -19,6 +19,9 @@
         </ItemsPanelTemplate>
     </Window.Resources>
     <Grid>
+        <b:Interaction.Behaviors>
+            <b:DataStateBehavior Binding="{Binding IsOpen, ElementName=window}" Value="True" TrueState="Open" FalseState="Closed"/>
+        </b:Interaction.Behaviors>
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup x:Name="ToolbarStates">
                 <VisualState x:Name="Closed" />
